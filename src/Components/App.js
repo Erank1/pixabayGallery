@@ -3,7 +3,17 @@ import ImagePage from "./ImagePage"
 import SavedList from "./SavedList";
 import { useState, useEffect } from "react";
 
+/**
+ * The main Component App, that managing and handling all the states.
+ * It's returning the complete rendered app.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function App() {
+    /**
+     * Creating the states that will pass and update in child components.
+     * Next functions is for passing callbacks to the child components.
+     */
     const [search_term, setSearchTerm] = useState('');
     const [fetched, setFetched] = useState([]);
     const [savedList, setSavedList] = useState([]);
@@ -23,6 +33,9 @@ function App() {
     //     localStorage.removeItem('savedList');
     // });
 
+    /**
+     * useEffect hook to fetch once search term is changing.
+     */
     useEffect(()=>{
         const fetchPictures = (async ()=>{
             const URL = `https://pixabay.com/api/?key=23970323-d5496006ab582936ac74a116c&q=
@@ -42,6 +55,11 @@ function App() {
         }
     }, [search_term],[setSavedList]);
 
+    /**
+     * useEffects hooks to handle the localStorage. First is call when the list is change
+     * the second one called once when the application runs, to load the data from
+     * the localStorage.
+     */
     useEffect(()=>{
         if(savedList.length !== 0)
         localStorage.setItem('savedList', savedList.toString());

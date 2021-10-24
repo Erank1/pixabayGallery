@@ -1,6 +1,9 @@
 import React from "react";
 import keygen from "./KeyGenerator";
 
+/**
+ * Class Image is for creating object for each image.
+ */
 class Image{
     constructor(img) {
         this.imgSRC = img;
@@ -15,8 +18,18 @@ class Image{
     }
 }
 
+/**
+ * This function handling the build of the ImagesPage by rows and cols.
+ * @param imagesList
+ * @returns {*[]}
+ * @constructor
+ */
 const CraftingImagesPage = ({imagesList})=> {
 
+    /**
+     * Creating imagesElement from imagesList
+     * @returns {*[]}
+     */
     function craftingImagesPage() {
         const imagesElements = [];
         for (let i of imagesList) {
@@ -28,6 +41,10 @@ const CraftingImagesPage = ({imagesList})=> {
 
     const imagesElements = craftingImagesPage();
 
+    /**
+     * returning only four cols each call, so each row gets 4 cols.
+     * @returns {*[]}
+     */
     function fourColsGen() {
         const result = [];
         for (let i = 0; i < 4 && imagesElements.length > 0; i++) {
@@ -40,11 +57,20 @@ const CraftingImagesPage = ({imagesList})=> {
     }
     const rows = [];
 
+    /**
+     * Generating rows list.
+     */
     while (imagesElements.length > 0) {
         rows.push(<div key={keygen.getUniqueKey()} className="row justify-content-center h-25">{fourColsGen()}</div>)
     }
     return rows;
 }
+/**
+ * returning the Component with the complete rows.
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const ImagePage = (props)=>{
     const rows = CraftingImagesPage(props)
     return(
