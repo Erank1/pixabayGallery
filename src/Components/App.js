@@ -76,7 +76,7 @@ function App() {
        <div className="container-fluid col-12 text-center bg-light p-5">
            <h1 className="text-primary display-1">Image Gallery</h1>
            <SearchBar search_term ={search_term} setSearchTerm={setTerm} setSaved={setSaved} />
-           <SavedList savedList={savedList} setSearchTerm = {setTerm} initializeSaved={initializeSaved} />
+           <SavedList savedList={savedList} setSearchTerm = {setTerm} />
        </div>
       </header>
         <main>
